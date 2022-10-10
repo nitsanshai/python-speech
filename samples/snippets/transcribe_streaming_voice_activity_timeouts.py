@@ -72,7 +72,7 @@ def transcribe_streaming_voice_activity_timeouts(project_id, recognizer_id, audi
     def requests(config, audio):
         yield config
         for message in audio:
-            sleep(0.5)
+            sleep(0.6)
             yield message
 
     # Transcribes the audio into text
