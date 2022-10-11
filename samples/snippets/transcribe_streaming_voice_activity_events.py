@@ -15,6 +15,7 @@
 
 # [START speech_transcribe_streaming_voice_activity_events]
 import io
+import argparse
 
 from google.cloud.speech_v2 import SpeechClient
 from google.cloud.speech_v2.types import cloud_speech
@@ -89,4 +90,11 @@ def transcribe_streaming_voice_activity_events(project_id, recognizer_id, audio_
 
 
 if __name__ == "__main__":
-    transcribe_streaming_voice_activity_events()
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument("project_id", help="project to create recognizer in")
+    parser.add_argument("recognizer_id", help="name of recognizer to create")
+    parser.add_argument("audio_file", help="audio file to stream")
+    args = parser.parse_args()
+    transcribe_streaming_voice_activity_events(args.project_id, args.recognizer_id, args.audio_file)
